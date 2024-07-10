@@ -58,12 +58,20 @@ public class AdjacencyGraph<N> implements MutableGraph<N> {
 
     @Override
     public void addNode(N node) {
-        crash(); //TODO: H1 c) - remove if implemented
+        //TODO: H1 c)
+        if (nodeToIndex.containsKey(node) || indexToNode.containsValue(node)){
+            return;
+        }
+        nodeToIndex.put(node, nodeToIndex.size());
+        indexToNode.put(indexToNode.size(), node);
+        representation.grow();
     }
 
     @Override
     public void addEdge(Edge<N> edge) {
-        crash(); //TODO: H1 c) - remove if implemented
+        //TODO: H1 c)
+        getEdges().add(edge);
+        
     }
 
     @Override

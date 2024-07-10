@@ -1,5 +1,7 @@
 package p3.graph;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.tudalgo.algoutils.student.Student.crash;
@@ -38,17 +40,35 @@ public class AdjacencyMatrix implements AdjacencyRepresentation {
 
     @Override
     public void addEdge(int from, int to) {
-        crash(); //TODO: H1 a) - remove if implemented
+        //TODO: H1 a)
+        if (from >= size() || to >= size() || from < 0 || to < 0) {
+            matrix[from][to] = true;
+        }
+        throw new IndexOutOfBoundsException("Index out of bounds");
     }
 
     @Override
     public boolean hasEdge(int from, int to) {
-        return crash(); //TODO: H1 a) - remove if implemented
+        //TODO: H1 a)
+        if (from >= size() || to >= size() || from < 0 || to < 0){
+            return matrix[from][to];
+        }
+        throw new IndexOutOfBoundsException("Index out of bounds");
     }
 
     @Override
     public Set<Integer> getAdjacentIndices(int index) {
-        return crash(); //TODO: H1 a) - remove if implemented
+        //TODO: H1 a)
+        if (index > 0 || index < size()){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        HashSet<Integer> adjacentIndices = new HashSet<>();
+        for(int i = 0; i < size(); i++){
+            if (matrix[index][i]){
+                adjacentIndices.add(i);
+            }
+        }
+        return adjacentIndices;
     }
 
     @Override
